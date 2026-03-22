@@ -19,7 +19,10 @@ const base = import.meta.env.BASE_URL;
   </head>
   <body>
     <nav class="nav">
-      <a href={base} class="nav-logo">OpenRG</a>
+      <a href={base} class="nav-logo">
+        <img src={`${base}logo.png`} alt="OpenRG" class="nav-logo-img" />
+        OpenRG
+      </a>
       <div class="nav-links">
         <a href={base} class={activePage === 'talks' ? 'active' : ''}>Talks</a>
         <a href={`${base}about/`} class={activePage === 'about' ? 'active' : ''}>About</a>
