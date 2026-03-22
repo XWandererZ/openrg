@@ -10,6 +10,7 @@ const talks = defineCollection({
     slides: z.string().url().optional(),
     recording: z.string().url().optional(),
     description: z.string().optional(),
+    type: z.enum(['talk', 'introduction', 'discussion']).default('talk'),
   }),
 });
 

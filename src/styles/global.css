@@ -131,6 +131,29 @@ a:hover {
   color: var(--color-text);
 }
 
+.talk-type-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: capitalize;
+}
+
+.talk-type-tag.talk {
+  background: #eff6ff;
+  color: #0161ef;
+}
+
+.talk-type-tag.introduction {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.talk-type-tag.discussion {
+  background: #fff7ed;
+  color: #d97706;
+}
+
 .talk-card-detail {
   display: flex;
   align-items: center;
