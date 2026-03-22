@@ -142,6 +142,15 @@ a:hover {
   gap: 10px;
 }
 
+.talk-card-header .talk-card-links {
+  margin-top: 0;
+  padding-left: 0;
+}
+
+.talk-card-links a::after {
+  content: " \2197";
+}
+
 .talk-card-title {
   font-size: 16px;
   font-weight: 700;
@@ -157,18 +166,18 @@ a:hover {
 }
 
 .talk-type-tag.talk {
-  background: #eff6ff;
-  color: #0161ef;
+  background: #f3f4f6;
+  color: #6b7280;
 }
 
 .talk-type-tag.introduction {
-  background: #ecfdf5;
-  color: #059669;
+  background: #f0fdf4;
+  color: #4b5563;
 }
 
 .talk-type-tag.discussion {
-  background: #fff7ed;
-  color: #d97706;
+  background: #fefce8;
+  color: #4b5563;
 }
 
 .talk-card-detail {
@@ -303,4 +312,55 @@ a:hover {
 
 .text-center {
   text-align: center;
+}
+
+/* Talk detail page */
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.talk-detail-title {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.talk-detail-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+}
+
+.talk-detail-image {
+  max-width: 300px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.talk-detail-content {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #444;
+}
+
+.talk-detail-slides {
+  display: inline-block;
+  margin-top: 24px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.talk-card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.talk-card-title a:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
 }

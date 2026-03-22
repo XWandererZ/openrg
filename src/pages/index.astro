@@ -4,6 +4,8 @@ import { getCollection } from 'astro:content';
 
 const allTalks = await getCollection('talks');
 const now = new Date();
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
 
 const upcomingTalks = allTalks
   .filter((talk) => talk.data.date >= now)
@@ -12,6 +14,8 @@ const upcomingTalks = allTalks
 const pastTalks = allTalks
   .filter((talk) => talk.data.date < now)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const arrow = '\u2197';
 
 function getCategory(talk: any): string {
   return talk.data.category || 'talk';
@@ -22,6 +26,7 @@ function formatDate(date: Date): string {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
+    timeZone: 'UTC',
   });
 }
 ---
@@ -36,7 +41,7 @@ function formatDate(date: Date): string {
     {upcomingTalks.length === 0 ? (
       <p class="empty-state">
         No upcoming talks at the moment. DM or reply in
-        <a href="https://discord.gg/4z2BNH5S">Discord</a> if you want to present!
+        <a href="https://discord.gg/47S3xZ4F">Discord</a> if you want to present!
       </p>
     ) : (
       upcomingTalks.map((talk) => (
@@ -44,8 +49,14 @@ function formatDate(date: Date): string {
           <div class="talk-card-content">
             <div class="talk-card-header">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" /></svg>
-              <div class="talk-card-title">{talk.data.title}</div>
+              <div class="talk-card-title"><a href={`${base}talks/${talk.slug}/`}>{talk.data.title}</a></div>
               <span class={`talk-type-tag ${getCategory(talk)}`}>{getCategory(talk)}</span>
+              {(talk.data.slides || talk.data.recording) && (
+                <div class="talk-card-links">
+                  {talk.data.slides && <a href={talk.data.slides}>Slides</a>}
+                  {talk.data.recording && <a href={talk.data.recording}>Recording</a>}
+                </div>
+              )}
             </div>
             <div class="talk-card-detail">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /></svg>
@@ -62,12 +73,6 @@ function formatDate(date: Date): string {
               )}
             </div>
             {talk.data.description && <p class="talk-card-description">{talk.data.description}</p>}
-            {(talk.data.slides || talk.data.recording) && (
-              <div class="talk-card-links">
-                {talk.data.slides && <a href={talk.data.slides}>Slides</a>}
-                {talk.data.recording && <a href={talk.data.recording}>Recording</a>}
-              </div>
-            )}
           </div>
           {talk.data.image && <img src={talk.data.image} alt="" class="talk-card-image" />}
         </div>
@@ -86,8 +91,14 @@ function formatDate(date: Date): string {
         <div class="talk-card-content">
           <div class="talk-card-header">
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" /></svg>
-            <div class="talk-card-title">{talk.data.title}</div>
+            <div class="talk-card-title"><a href={`${base}talks/${talk.slug}/`}>{talk.data.title}</a></div>
             <span class={`talk-type-tag ${getCategory(talk)}`}>{getCategory(talk)}</span>
+            {(talk.data.slides || talk.data.recording) && (
+              <div class="talk-card-links">
+                {talk.data.slides && <a href={talk.data.slides}>Slides</a>}
+                {talk.data.recording && <a href={talk.data.recording}>Recording</a>}
+              </div>
+            )}
           </div>
           <div class="talk-card-detail">
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /></svg>
@@ -104,12 +115,6 @@ function formatDate(date: Date): string {
             )}
           </div>
           {talk.data.description && <p class="talk-card-description">{talk.data.description}</p>}
-          {(talk.data.slides || talk.data.recording) && (
-            <div class="talk-card-links">
-              {talk.data.slides && <a href={talk.data.slides}>Slides</a>}
-              {talk.data.recording && <a href={talk.data.recording}>Recording</a>}
-            </div>
-          )}
         </div>
         {talk.data.image && <img src={talk.data.image} alt="" class="talk-card-image" />}
       </div>
