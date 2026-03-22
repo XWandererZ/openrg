@@ -3,4 +3,4 @@ dist/
 .astro/
 .superpowers/
 .DS_Store
-assets/
+_local/
