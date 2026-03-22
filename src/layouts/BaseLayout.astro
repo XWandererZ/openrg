@@ -1,0 +1,37 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  activePage?: 'talks' | 'about';
+}
+
+const { title, activePage = 'talks' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} — OpenRG</title>
+  </head>
+  <body>
+    <nav class="nav">
+      <a href={base} class="nav-logo">OpenRG</a>
+      <div class="nav-links">
+        <a href={base} class={activePage === 'talks' ? 'active' : ''}>Talks</a>
+        <a href={`${base}about/`} class={activePage === 'about' ? 'active' : ''}>About</a>
+      </div>
+    </nav>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="footer">
+      © OpenRG · <a href="https://discord.gg/4z2BNH5S">Discord</a>
+    </footer>
+  </body>
+</html>
