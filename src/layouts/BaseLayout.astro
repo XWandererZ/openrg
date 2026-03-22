@@ -7,7 +7,8 @@ interface Props {
 }
 
 const { title, activePage = 'talks' } = Astro.props;
-const base = import.meta.env.BASE_URL;
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
 ---
 
 <!doctype html>
@@ -20,7 +21,7 @@ const base = import.meta.env.BASE_URL;
   <body>
     <nav class="nav">
       <a href={base} class="nav-logo">
-        <img src={`${base}/logo.png`} alt="OpenRG" class="nav-logo-img" />
+        <img src={`${base}logo.png`} alt="OpenRG" class="nav-logo-img" />
         OpenRG
       </a>
       <div class="nav-links">
