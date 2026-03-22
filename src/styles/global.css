@@ -76,6 +76,22 @@ a:hover {
   font-weight: 600;
 }
 
+.nav-icon {
+  display: flex;
+  align-items: center;
+  color: var(--color-text-secondary);
+}
+
+.nav-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.nav-icon:hover {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
 /* Section headers */
 .section-title {
   font-size: 28px;
