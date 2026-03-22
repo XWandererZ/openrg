@@ -134,9 +134,8 @@ a:hover {
 .talk-card-detail {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   margin-top: 6px;
-  padding-left: 28px;
   font-size: 14px;
   color: var(--color-text-secondary);
 }
