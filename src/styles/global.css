@@ -113,6 +113,23 @@ a:hover {
   border-radius: 8px;
   padding: 20px 24px;
   background: var(--color-card-bg);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.talk-card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.talk-card-image {
+  flex-shrink: 0;
+  width: 120px;
+  height: 90px;
+  border-radius: 6px;
+  object-fit: cover;
+  align-self: center;
 }
 
 .talk-card + .talk-card {
