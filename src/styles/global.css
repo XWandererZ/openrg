@@ -54,9 +54,9 @@ a:hover {
 }
 
 .nav-logo-img {
-  width: 32px;
-  height: 32px;
-  border-radius: 6px;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
 }
 
 .nav-links {
@@ -99,11 +99,19 @@ a:hover {
   margin: 0 auto;
 }
 
+/* Icons */
+.icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+}
+
 /* Talk cards */
 .talk-card {
   border: 1px solid var(--color-border);
   border-radius: 8px;
-  padding: 16px 20px;
+  padding: 20px 24px;
   background: var(--color-card-bg);
 }
 
@@ -111,18 +119,25 @@ a:hover {
   margin-top: 12px;
 }
 
+.talk-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
 .talk-card-title {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--color-text);
 }
 
-.talk-card-meta {
+.talk-card-detail {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
   margin-top: 6px;
-  font-size: 13px;
+  padding-left: 28px;
+  font-size: 14px;
   color: var(--color-text-secondary);
 }
 
@@ -130,6 +145,7 @@ a:hover {
   display: flex;
   gap: 12px;
   margin-top: 8px;
+  padding-left: 28px;
   font-size: 13px;
 }
 
