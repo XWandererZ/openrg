@@ -44,6 +44,12 @@ function formatDate(date: Date): string {
             {talk.data.affiliation && <span>🏛️ {talk.data.affiliation}</span>}
           </div>
           {talk.data.description && <p class="talk-card-description">{talk.data.description}</p>}
+          {(talk.data.slides || talk.data.recording) && (
+            <div class="talk-card-links">
+              {talk.data.slides && <a href={talk.data.slides}>📄 Slides</a>}
+              {talk.data.recording && <a href={talk.data.recording}>🎥 Recording</a>}
+            </div>
+          )}
         </div>
       ))
     )}
